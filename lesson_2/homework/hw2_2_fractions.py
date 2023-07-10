@@ -2,6 +2,8 @@
 # Программа должна возвращать сумму и *произведение дробей. Для проверки своего
 # кода используйте модуль fractions.
 
+import fractions
+
 fraction_1 = str(input('Введите первую дробь в формате a/b: '))
 fraction_2 = str(input('Введите вторую дробь в формате a/b: '))
 
@@ -19,3 +21,11 @@ product = str(f'{enumerator1 * enumerator2}/{denominator1 * denominator2}')
 
 print('Сумма дробей =', sum)
 print('Произведение дробей =', product)
+
+
+f_1 = fractions.Fraction(enumerator1, denominator1)
+f_2 = fractions.Fraction(enumerator2, denominator2)
+print('{} + {} = {}'.format(f_1, f_2, f_1 + f_2))
+print('{} * {} = {}'.format(f_1, f_2, f_1 * f_2))
+
+
