@@ -12,27 +12,34 @@ friends_items = {
     'Друг3': ('Рюкзак', 'Палатка', 'Спички', 'Складной стул'),
     }
 
+all_items = set()
+
+for key, value in friends_items.items():
+    all_items.update(set(value))
+
+#print(all_items)
+
 common_items = (set.intersection(set(friends_items['Друг1']), set(friends_items['Друг2']), set(friends_items['Друг3'])))
-print(common_items)
+print('У всех друзей есть: ', common_items)
 
-friend1_items = set(friends_items['Друг1'])
-friend2_items = set(friends_items['Друг2'])
-friend3_items = set(friends_items['Друг3'])
 
-unique_items = set()
-for i in friend1_items:
-    if i not in friend2_items and i not in friend3_items:
-        unique_items.add(i)
-for i in friend2_items:
-    if i not in friend1_items and i not in friend3_items:
-        unique_items.add(i)
-for i in friend3_items:
-    if i not in friend1_items and i not in friend2_items:
-        unique_items.add(i)
-print(unique_items)
+print('Вещи, которые есть только у одного из друзей:')
+for key, value in friends_items.items():
+    unique_items = set(value)
+    for name, item in friends_items.items():
+        if name != key:
+            unique_items.difference_update(set(item))
+    print(key, unique_items)
 
-#print(set.difference(set(friends_items['Друг1']), set(friends_items['Друг2']), set(friends_items['Друг3'])))
 
-#for item in friends_items.values():
-#    unique_items.update(set(item).difference(all_items))
+print('Вещи, которых нет у одного из друзей: ')
+
+for key, value in friends_items.items():
+    two_friends_items = all_items.copy()
+    for name, item in friends_items.items():
+        if name != key:
+            two_friends_items.intersection_update(set(item))
+    two_friends_items.difference_update(set(value))
+    if two_friends_items:
+        print(key, two_friends_items)
 
