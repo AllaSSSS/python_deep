@@ -19,5 +19,5 @@ def args_to_dict(**kwargs):
 #return {val: name for name, val in kwargs.items()}
 
 
-print(args_to_dict(a='Hello', b='World', c='!', d=[1, 2, 3], e=[2, 'y'], g=0.002))
+print(args_to_dict(a='Hello', b='World', c='!', d=[1, 2, 3], e=[2, 'y'], f=True, g=0.002))
 

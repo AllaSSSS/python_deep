@@ -34,7 +34,7 @@ def deposit(balance):
         return balance
 
     balance += amount
-    return balance
+    return balance, amount
 
 def withdraw(balance):
     amount = int(input("Введите сумму для снятия (кратную 50): "))
@@ -54,7 +54,7 @@ def withdraw(balance):
         fee = 30
 
     balance -= amount + fee
-    return balance
+    return balance, amount
 
 def print_balance(balance):
     print("Остаток на счете:", balance)
@@ -62,7 +62,7 @@ def print_balance(balance):
 def atm():
     balance = 0
     operations_count = 0
-    operations_count_list = []
+    history = []
 
     while True:
         balance = calculate_tax(balance)
@@ -76,15 +76,24 @@ def atm():
                        "Введите номер действия: ")
 
         if choice == "1":
-            balance = deposit(balance)
+            balance, amount = deposit(balance)
             operations_count += 1
-            operations_count_list = [('Пополнение: ', )]
+            history.append(+amount)
 
         elif choice == "2":
-            balance = withdraw(balance)
+            balance, amount = withdraw(balance)
             operations_count += 1
+            history.append(-amount)
+
         elif choice == "3":
-            print("Операция завершена")
+            print("Операция завершена. История операций:")
+            for amount in history:
+                if amount > 0:
+                    print(f'пополнение { amount: >6}')
+                else:
+                    print(f"снятие     {-amount: >6}")
+                    print("-----------------")
+                    print(f"остаток    {balance: >6}")
             break
         else:
             print("Некорректный выбор")
