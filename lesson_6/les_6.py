@@ -7,7 +7,7 @@
 # Для формирования результатов используйте генераторное выражение.
 
 from les_4 import secrets
-
+_data = {}
 
 def storage():
     puzzles = {
@@ -18,11 +18,8 @@ def storage():
     for key, value in puzzles.items():
         result = secrets(key, value)
         print(f'Угадал с {result} попытки' if result > 0 else 'Не угадал')
+        save(key, result)
 
-if __name__ == '__main__':
-    storage()
-
-_data = {}
 
 def save(puzzle: str, count: int):
     _data.update({puzzle: count})
@@ -34,3 +31,7 @@ def show():
            for key, value in _data.items())
     print('\n'.join(res))
 
+
+if __name__ == '__main__':
+    storage()
+    show()

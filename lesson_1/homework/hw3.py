@@ -2,7 +2,9 @@
 # должна подсказывать «больше» или «меньше» после каждой попытки.
 
 from random import randint
-num = randint(0, 1000)
+LOWER_LIMIT = 0
+UPPER_LIMIT = 1000
+num = randint(LOWER_LIMIT, UPPER_LIMIT)
 
 count = 1
 shot = None
