@@ -1,0 +1,4 @@
+path_login: 'https://test-stand.gb.ru/gateway/login'
+path_post: 'https://test-stand.gb.ru/api/posts'
+username: 'Sidor03'
+password: 'a291844463'
