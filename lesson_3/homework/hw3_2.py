@@ -3,7 +3,7 @@
 # и регистр символов. За основу возьмите любую статью
 # из википедии или из документации к языку.
 
-import re
+# import re
 
 my_string = 'Wombats are short-legged, muscular quadrupedal marsupials of the family Vombatidae that are ' \
             'native to Australia. Living species are about 1 m (40 in) in length with small, stubby tails ' \
@@ -33,7 +33,7 @@ for i in my_string_list:
 
 
 sorted_dict = dict(sorted(my_string_dict.items(), key=lambda x: x[1], reverse=True))
-#print(sorted_dict)
+# print(sorted_dict)
 
 ten_items = list(sorted_dict.items())[:10]
 print(ten_items)
